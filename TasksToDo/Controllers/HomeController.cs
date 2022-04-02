@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using TasksToDo.Models;
+using TasksToDo.ViewModels.Tasks;
 
 namespace TasksToDo.Controllers
 {
@@ -18,9 +19,9 @@ namespace TasksToDo.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(TasksIndexViewModelQuery query)
         {
-            return View();
+            return RedirectToAction("Index", "Tasks");
         }
 
         public IActionResult Privacy()

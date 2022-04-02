@@ -1,0 +1,46 @@
+﻿@model TasksToDo.ViewModels.Tasks.TasksIndexViewModel
+@{ ViewBag.Title = "Tasks"; }
+
+<h2>@ViewBag.Title</h2>
+
+@if (Model.ShowNotificationMessage)
+{
+    <p class="alert alert-success">@Model.NotificationMessage</p>}
+
+
+
+<p>
+    <a asp-controller="Tasks" asp-action="Add" class="btn btn-primary">Create New</a>
+</p>
+
+<table class="table">
+    <tr>
+        <th>Status</th>
+        <th>Task Description</th>
+        <th>Actions</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Items)
+    {
+        <tr>
+            <td>
+                <form asp-controller="Tasks" asp-action="UpdateStatus" method="post" role="form">
+                    <input type="checkbox" value="true" name="Completed" @(item.IsComplete ? "checked" : string.Empty) />
+                    <input name="Id" value="@item.Id" type="hidden" />
+
+                    <input type="submit" value="Update" class="btn btn-sm" />
+                </form>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+
+            <td>
+                <a asp-controller="Tasks" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                |
+                <a asp-controller="Tasks" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
