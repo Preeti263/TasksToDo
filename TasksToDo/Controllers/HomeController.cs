@@ -24,6 +24,11 @@ namespace TasksToDo.Controllers
             return RedirectToAction("Index", "Tasks");
         }
 
+        public IActionResult test(TasksIndexViewModelQuery query)
+        {
+            return RedirectToAction("Index", "Tasks");
+        }
+
         public IActionResult Privacy()
         {
             return View();

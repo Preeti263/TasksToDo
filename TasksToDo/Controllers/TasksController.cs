@@ -5,10 +5,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using TasksToDo.ViewModels.Tasks;
 
 namespace TasksToDo.Controllers
 {
+    [Authorize]
     public class TasksController : Controller
     {
         private readonly IMediator _mediator;

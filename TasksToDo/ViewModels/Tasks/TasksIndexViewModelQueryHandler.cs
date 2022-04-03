@@ -21,19 +21,21 @@ namespace TasksToDo.ViewModels.Tasks
         public async Task<TasksIndexViewModel> Handle(TasksIndexViewModelQuery request, CancellationToken cancellationToken)
         {
 
+            
+                var records = Context.Tasks.ToList();
+                var model = new TasksIndexViewModel
+                {
 
-            var model = new TasksIndexViewModel
-            {
-
-                Items = await Context.Tasks
+                    Items = await Context.Tasks
 
 
-                    .OrderBy(x => x.Description)
-                    .ProjectTo<TasksIndexViewModel.TaskListEntry>(Mapper.ConfigurationProvider)
-                    .ToListAsync()
-            };
-
-            return model;
+                        .OrderBy(x => x.Description)
+                        .ProjectTo<TasksIndexViewModel.TaskListEntry>(Mapper.ConfigurationProvider)
+                        .ToListAsync()
+                };
+                return model;
+            
+            
         }
     }
 }

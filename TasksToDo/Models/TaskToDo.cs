@@ -14,7 +14,7 @@ namespace TasksToDo.Models
             SetDetails(description);
         }
         public int UserId { get; set; }
-        public string  Pwd { get; set; }
+       // public string  Pwd { get; set; }
 
 
         [Required]
